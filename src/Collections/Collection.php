@@ -7,7 +7,7 @@
 
 namespace Gekko\Collections;
 
-class Collection implements \IteratorAggregate
+class Collection implements \IteratorAggregate, \Countable
 {
     private $items;
 
@@ -19,6 +19,11 @@ class Collection implements \IteratorAggregate
     public static function of($items) : self
     {
         return new self($items);
+    }
+
+    public function count() : int
+    {
+        return \count($this->items);
     }
 
     public function getIterator() {
